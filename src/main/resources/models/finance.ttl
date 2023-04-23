@@ -41,6 +41,11 @@
   rdfs:label "House"@en ;
   rdfs:label "Huis"@nl ;
 .
+:Income
+  rdf:type :Category ;
+  rdfs:label "Income"@en ;
+  rdfs:label "Inkomsten"@nl ;
+.
 :Mobility
   rdf:type :Category ;
   rdfs:label "Mobiliteit"@nl ;
@@ -150,12 +155,27 @@
 [
   rdf:type :Company ;
   :category :Art ;
+  rdfs:label "Haagse Kunstkring SGRAVENHAGE" ;
+].
+[
+  rdf:type :Company ;
+  :category :Art ;
+  rdfs:label "NABK via Mollie" ;
+].
+[
+  rdf:type :Company ;
+  :category :Art ;
   rdfs:label "STICHTING VOORLINDEN WASSENAAR" ;
 ].
 [
   rdf:type :Company ;
   :category :Art ;
   rdfs:label "St. Art en Jazz" ;
+].
+[
+  rdf:type :Company ;
+  :category :Care ;
+  rdfs:label "Chinaturel Beauty Sa SGRAVENHAGE" ;
 ].
 [
   rdf:type :Company ;
@@ -180,6 +200,26 @@
 [
   rdf:type :Company ;
   :category :Care ;
+  rdfs:label "Flinndal" ;
+].
+[
+  rdf:type :Company ;
+  :category :Care ;
+  rdfs:label "Foodie BV via Mollie" ;
+].
+[
+  rdf:type :Company ;
+  :category :Care ;
+  rdfs:label "G.C. Smeekes" ;
+].
+[
+  rdf:type :Company ;
+  :category :Care ;
+  rdfs:label "MODERN OPTIEK LEIDSCHENDAM NLD" ;
+].
+[
+  rdf:type :Company ;
+  :category :Care ;
   rdfs:label "SPUI 241 BV S GRAVENHAGE NLD" ;
 ].
 [
@@ -191,6 +231,16 @@
   rdf:type :Company ;
   :category :Care ;
   rdfs:label "Zilveren Kruis Zorgverzekeringen NV" ;
+].
+[
+  rdf:type :Company ;
+  :category :Care ;
+  rdfs:label "Zilveren Kruis Zorgverzekeringen NV" ;
+].
+[
+  rdf:type :Company ;
+  :category :Care ;
+  rdfs:label "synoshop.com via MultiSafepay" ;
 ].
 [
   rdf:type :Company ;
@@ -216,6 +266,11 @@
   rdf:type :Company ;
   :category :Charity ;
   rdfs:label "NAT POSTCODE LOTERIJ" ;
+].
+[
+  rdf:type :Company ;
+  :category :Charity ;
+  rdfs:label "STICHTING HET ZUIDHOLLANDS LANDSCHAP" ;
 ].
 [
   rdf:type :Company ;
@@ -256,6 +311,31 @@
   rdf:type :Company ;
   :category :Food ;
   rdfs:label "Ekoplaza Leidschendam" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "Hoogvliet 430 11 LEIDSCHENDAM" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "Hoogvliet 430 12 LEIDSCHENDAM" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "Hoogvliet 430 16 LEIDSCHENDAM" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "Hoogvliet 430 18 LEIDSCHENDAM" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "Meesterbakker Remmersw" ;
 ].
 [
   rdf:type :Company ;
@@ -320,7 +400,42 @@
 [
   rdf:type :Company ;
   :category :House ;
+  rdfs:label "CLEANPROFS B V" ;
+].
+[
+  rdf:type :Company ;
+  :category :House ;
+  rdfs:label "DE BLOEMENVINK LEIDSCHENDAM NLD" ;
+].
+[
+  rdf:type :Company ;
+  :category :House ;
+  rdfs:label "HOFSTEDE SGRAVENHAGE NLD" ;
+].
+[
+  rdf:type :Company ;
+  :category :House ;
+  rdfs:label "OHRA Schadeverzekeringen" ;
+].
+[
+  rdf:type :Company ;
+  :category :House ;
   rdfs:label "YumekoBV" ;
+].
+[
+  rdf:type :Company ;
+  :category :Income ;
+  rdfs:label "STG PENSIOENFONDS ABP" ;
+].
+[
+  rdf:type :Company ;
+  :category :Income ;
+  rdfs:label "Sociale Verzekeringsbank" ;
+].
+[
+  rdf:type :Company ;
+  :category :Income ;
+  rdfs:label "Stichting Pensioenfonds TNO" ;
 ].
 [
   rdf:type :Company ;
@@ -345,6 +460,11 @@
 [
   rdf:type :Company ;
   :category :Mobility ;
+  rdfs:label "MotorhuisFil311 SGRAVENHAGE NLD" ;
+].
+[
+  rdf:type :Company ;
+  :category :Mobility ;
   rdfs:label "MotorhuisFil311 SGRAVENHAGE" ;
 ].
 [
@@ -361,6 +481,11 @@
   rdf:type :Company ;
   :category :Mobility ;
   rdfs:label "YELLOWBRICK BY BUCKAROO" ;
+].
+[
+  rdf:type :Company ;
+  :category :Mobility ;
+  rdfs:label "gem. den haag - belastingen" ;
 ].
 [
   rdf:type :Company ;
@@ -405,6 +530,21 @@
 [
   rdf:type :Company ;
   :category :Subscriptions-Books ;
+  rdfs:label "Elvira Werkman Journalistiek via Mollie" ;
+].
+[
+  rdf:type :Company ;
+  :category :Subscriptions-Books ;
+  rdfs:label "Esther Hessing Fotografie" ;
+].
+[
+  rdf:type :Company ;
+  :category :Subscriptions-Books ;
+  rdfs:label "FNV" ;
+].
+[
+  rdf:type :Company ;
+  :category :Subscriptions-Books ;
   rdfs:label "NRC" ;
 ].
 [
@@ -435,6 +575,11 @@
 [
   rdf:type :Company ;
   :category :Taxes ;
+  rdfs:label "Gemeente Leidschendam Voorburg" ;
+].
+[
+  rdf:type :Company ;
+  :category :Taxes ;
   rdfs:label "Regionale Belasting Groep" ;
 ].
 [
@@ -447,6 +592,16 @@
   rdf:type :Company ;
   :category :Teleservices ;
   rdfs:label "Antagonist B.V." ;
+].
+[
+  rdf:type :Company ;
+  :category :Teleservices ;
+  rdfs:label "KPN - Mobiel" ;
+].
+[
+  rdf:type :Company ;
+  :category :Teleservices ;
+  rdfs:label "KWF Loterijen via Mollie" ;
 ].
 [
   rdf:type :Company ;

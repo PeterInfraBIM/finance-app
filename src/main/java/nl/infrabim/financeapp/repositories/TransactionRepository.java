@@ -123,24 +123,32 @@ public class TransactionRepository {
 
     public JsonNode getTransactions() throws IOException {
         String queryString = """
-                SELECT ?date ?name ?account ?counterAccount ?description ?date ?amount ?credit ?mutationType ?mutationCode ?tag
-                WHERE {
-                 ?s <http://infrabim.nl/finance#name> ?name ;
-                  <http://infrabim.nl/finance#account> ?account ;
-                  <http://infrabim.nl/finance#description> ?description ;
-                  <http://infrabim.nl/finance#date> ?date ;
-                  <http://infrabim.nl/finance#amount> ?amount ;
-                  <http://infrabim.nl/finance#credit> ?credit ;
-                  <http://infrabim.nl/finance#mutationType> ?mutationType ;
-                  <http://infrabim.nl/finance#mutationCode> ?mutationCode .
-                  OPTIONAL {
-                    ?s <http://infrabim.nl/finance#counterAccount> ?counterAccount .
+                  PREFIX : <http://infrabim.nl/finance#>
+                  PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+                  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+                                  
+                  SELECT ?date ?name ?account ?counterAccount ?description ?date ?amount ?credit ?mutationType ?mutationCode ?tag
+                  WHERE {
+                   ?s :name ?name ;
+                    :account ?account ;
+                    :description ?description ;
+                    :date ?date ;
+                    :amount ?amount ;
+                    :credit ?credit ;
+                    :mutationType ?mutationType ;
+                    :mutationCode ?mutationCode .
+                    OPTIONAL {
+                      ?s :counterAccount ?counterAccount .
+                    }
+                    OPTIONAL {
+                       ?c rdf:type :Company ;
+                           rdfs:label ?name ;
+                           :category ?category .
+                       ?category rdfs:label ?tag .
+                       FILTER(LANG(?tag) = "nl" ) }
                   }
-                  OPTIONAL {
-                    ?s <http://infrabim.nl/finance#tag> ?tag .
-                  }
-                }
-                ORDER BY ?date
+                  ORDER BY ?date
                 """;
 
         return fusekiService.sendQuery(queryString);
@@ -152,26 +160,26 @@ public class TransactionRepository {
                 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
                 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
                 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-                
+                                
                 SELECT ?date ?account ?counterAccount ?description ?amount ?credit ?mutationType ?mutationCode ?tag
                 WHERE {
                  ?s :name """
                 + "\"" + companyName + "\"" + """
-                   ;
-                  :account ?account ;
-                  :description ?description ;
-                  :date ?date ;
-                  :amount ?amount ;
-                  :credit ?credit ;
-                  :mutationType ?mutationType ;
-                  :mutationCode ?mutationCode .
-                  OPTIONAL {
-                    ?s :counterAccount ?counterAccount .
-                  }
-                  OPTIONAL {
-                    ?c rdf:type :Company ;
-                      rdfs:label """
-                    + "\"" + companyName + "\"" + """
+                 ;
+                :account ?account ;
+                :description ?description ;
+                :date ?date ;
+                :amount ?amount ;
+                :credit ?credit ;
+                :mutationType ?mutationType ;
+                :mutationCode ?mutationCode .
+                OPTIONAL {
+                  ?s :counterAccount ?counterAccount .
+                }
+                OPTIONAL {
+                  ?c rdf:type :Company ;
+                    rdfs:label """
+                + "\"" + companyName + "\"" + """
                        ;
                        :category ?category .
                     ?category rdfs:label ?tag .
@@ -185,25 +193,31 @@ public class TransactionRepository {
 
     public JsonNode getDateTransactions(LocalDate date) throws IOException {
         String queryString = """
+                PREFIX : <http://infrabim.nl/finance#>
                 PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+                PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                 SELECT ?date ?name ?account ?counterAccount ?description ?amount ?credit ?mutationType ?mutationCode ?tag
                 WHERE {
-                 ?s <http://infrabim.nl/finance#name> ?name ;
-                  <http://infrabim.nl/finance#account> ?account ;
-                  <http://infrabim.nl/finance#description> ?description ;
-                  <http://infrabim.nl/finance#date> ?date ;
-                  <http://infrabim.nl/finance#amount> ?amount ;
-                  <http://infrabim.nl/finance#credit> ?credit ;
-                  <http://infrabim.nl/finance#mutationType> ?mutationType ;
-                  <http://infrabim.nl/finance#mutationCode> ?mutationCode .
+                 ?s :name ?name ;
+                  :account ?account ;
+                  :description ?description ;
+                  :date ?date ;
+                  :amount ?amount ;
+                  :credit ?credit ;
+                  :mutationType ?mutationType ;
+                  :mutationCode ?mutationCode .
                   FILTER (?date = """
                 + "\"" + date + "\"^^xsd:date) ." + """
                   OPTIONAL {
-                    ?s <http://infrabim.nl/finance#counterAccount> ?counterAccount .
+                    ?s :counterAccount ?counterAccount .
                   }
-                  OPTIONAL {
-                    ?s <http://infrabim.nl/finance#tag> ?tag .
-                  }
+                OPTIONAL {
+                   ?c rdf:type :Company ;
+                       rdfs:label ?name ;
+                       :category ?category .
+                   ?category rdfs:label ?tag .
+                   FILTER(LANG(?tag) = "nl" ) }
                 }
                 ORDER BY ?name
                 """;
