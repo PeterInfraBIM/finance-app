@@ -1,0 +1,483 @@
+# baseURI: http://infrabim.nl/finance
+
+@prefix : <http://infrabim.nl/finance#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://infrabim.nl/finance>
+  rdf:type owl:Ontology ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
+:Art
+  rdf:type :Category ;
+  rdfs:label "Art"@en ;
+  rdfs:label "Kunst"@nl ;
+.
+:Care
+  rdf:type :Category ;
+  rdfs:label "Care"@en ;
+  rdfs:label "Zorg"@nl ;
+.
+:Category
+  rdf:type rdfs:Class ;
+.
+:Charity
+  rdf:type :Category ;
+  rdfs:label "Charity"@en ;
+  rdfs:label "Goede doelen"@nl ;
+.
+:Company
+  rdf:type rdfs:Class ;
+.
+:Food
+  rdf:type :Category ;
+  rdfs:label "Eten"@nl ;
+  rdfs:label "Food"@en ;
+.
+:House
+  rdf:type :Category ;
+  rdfs:label "House"@en ;
+  rdfs:label "Huis"@nl ;
+.
+:Mobility
+  rdf:type :Category ;
+  rdfs:label "Mobiliteit"@nl ;
+  rdfs:label "Mobility"@en ;
+.
+:Pets
+  rdf:type :Category ;
+  rdfs:label "Huisdieren"@nl ;
+  rdfs:label "Pets"@en ;
+.
+:Savings
+  rdf:type :Category ;
+  rdfs:label "Savings"@en ;
+  rdfs:label "Sparen"@nl ;
+.
+:Subscriptions-Books
+  rdf:type :Category ;
+  rdfs:label "Abonnementen-Boeken"@nl ;
+  rdfs:label "Subscriptions-Books"@en ;
+.
+:Taxes
+  rdf:type :Category ;
+  rdfs:label "Belastingen"@nl ;
+  rdfs:label "Taxes"@en ;
+.
+:Teleservices
+  rdf:type :Category ;
+  rdfs:label "Telediensten"@nl ;
+  rdfs:label "Teleservices"@en ;
+.
+:Transaction
+  rdf:type rdfs:Class ;
+.
+:account
+  rdf:type rdf:Property ;
+  rdfs:domain :Transaction ;
+  rdfs:label "Rekening"@nl ;
+  rdfs:range xsd:string ;
+.
+:amount
+  rdf:type rdf:Property ;
+  rdfs:domain :Transaction ;
+  rdfs:label "Bedrag (EUR)"@nl ;
+  rdfs:range xsd:decimal ;
+.
+:balanceAfterMutation
+  rdf:type rdf:Property ;
+  rdfs:domain :Transaction ;
+  rdfs:label "Saldo na mutatie"@nl ;
+  rdfs:range xsd:decimal ;
+.
+:category
+  rdf:type rdf:Property ;
+  rdfs:domain :Company ;
+  rdfs:range :Category ;
+.
+:counterAccount
+  rdf:type rdf:Property ;
+  rdfs:domain :Transaction ;
+  rdfs:label "Tegenrekening"@nl ;
+  rdfs:range xsd:string ;
+.
+:credit
+  rdf:type rdf:Property ;
+  rdfs:domain :Transaction ;
+  rdfs:label "Af Bij"@nl ;
+  rdfs:range xsd:boolean ;
+.
+:date
+  rdf:type rdf:Property ;
+  rdfs:domain rdfs:Resource ;
+  rdfs:label "Datum"@nl ;
+  rdfs:range xsd:date ;
+.
+:description
+  rdf:type rdf:Property ;
+  rdfs:label "Mededelingen"@nl ;
+  rdfs:range xsd:string ;
+.
+:mutationCode
+  rdf:type rdf:Property ;
+  rdfs:domain :Transaction ;
+  rdfs:label "Code"@nl ;
+  rdfs:range xsd:string ;
+.
+:mutationType
+  rdf:type rdf:Property ;
+  rdfs:domain :Transaction ;
+  rdfs:label "Mutatiesoort"@nl ;
+  rdfs:range xsd:string ;
+.
+:name
+  rdf:type rdf:Property ;
+  rdfs:label "Naam / omschrijving"@nl ;
+  rdfs:range xsd:string ;
+.
+:tag
+  rdf:type rdf:Property ;
+  rdfs:label "Tag"@nl ;
+  rdfs:range xsd:string ;
+.
+[
+  rdf:type :Company ;
+  :category :Art ;
+  rdfs:label "ARTIBRAK" ;
+].
+[
+  rdf:type :Company ;
+  :category :Art ;
+  rdfs:label "STICHTING VOORLINDEN WASSENAAR" ;
+].
+[
+  rdf:type :Company ;
+  :category :Art ;
+  rdfs:label "St. Art en Jazz" ;
+].
+[
+  rdf:type :Company ;
+  :category :Care ;
+  rdfs:label "Cooperatie VGZ U.A." ;
+].
+[
+  rdf:type :Company ;
+  :category :Care ;
+  rdfs:label "DE ROODE ROOS BV" ;
+].
+[
+  rdf:type :Company ;
+  :category :Care ;
+  rdfs:label "DIABETES FDS" ;
+].
+[
+  rdf:type :Company ;
+  :category :Care ;
+  rdfs:label "Dam Apotheek LEIDSCHENDAM NLD" ;
+].
+[
+  rdf:type :Company ;
+  :category :Care ;
+  rdfs:label "SPUI 241 BV S GRAVENHAGE NLD" ;
+].
+[
+  rdf:type :Company ;
+  :category :Care ;
+  rdfs:label "Zilveren Kruis Achmea" ;
+].
+[
+  rdf:type :Company ;
+  :category :Care ;
+  rdfs:label "Zilveren Kruis Zorgverzekeringen NV" ;
+].
+[
+  rdf:type :Company ;
+  :category :Charity ;
+  rdfs:label "ARTSEN ZONDER GRENZEN" ;
+].
+[
+  rdf:type :Company ;
+  :category :Charity ;
+  rdfs:label "Amnesty International via CM Payments" ;
+].
+[
+  rdf:type :Company ;
+  :category :Charity ;
+  rdfs:label "Avaaz Foundation" ;
+].
+[
+  rdf:type :Company ;
+  :category :Charity ;
+  rdfs:label "Het Wereld Natuur Fonds" ;
+].
+[
+  rdf:type :Company ;
+  :category :Charity ;
+  rdfs:label "NAT POSTCODE LOTERIJ" ;
+].
+[
+  rdf:type :Company ;
+  :category :Charity ;
+  rdfs:label "UNICEF NEDERLAND" ;
+].
+[
+  rdf:type :Company ;
+  :category :Charity ;
+  rdfs:label "VRIENDENLOTERIJ" ;
+].
+[
+  rdf:type :Company ;
+  :category :Charity ;
+  rdfs:label "natuurmonumenten, amersfoort" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "ALBERT HEIJN 1151 LEIDSCHENDAM" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "Bakker Klink KJ Plein VOORBURG" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "DE NOOTZAAK VAN GENIETEN" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "Drankenspeciaalzaak Pe" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "Ekoplaza Leidschendam" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "Nootzaak v Genieten VOORBURG NLD" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "Puurvis LEIDSCHENDAM NLD" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "SLAGERIJ JP SCHOLTEN" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "TOKO DAPUR IBU VOORBURG NLD" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "VanRijnGroentenFruit" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "Vishandel Simonis SGRAVENHAGE" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "Wesseling Ldam LEIDSCHENDAM NLD" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "Zuivel en Zo via Mollie" ;
+].
+[
+  rdf:type :Company ;
+  :category :Food ;
+  rdfs:label "Zuivelhandel Suyten BLEISWIJK" ;
+].
+[
+  rdf:type :Company ;
+  :category :House ;
+  rdfs:label "55F101GammaLveen SGRAVENHAGE NLD" ;
+].
+[
+  rdf:type :Company ;
+  :category :House ;
+  rdfs:label "ABN-AMRO 51.98.61.248" ;
+].
+[
+  rdf:type :Company ;
+  :category :House ;
+  rdfs:label "BUDGET ENERGIE" ;
+].
+[
+  rdf:type :Company ;
+  :category :House ;
+  rdfs:label "YumekoBV" ;
+].
+[
+  rdf:type :Company ;
+  :category :Mobility ;
+  rdfs:label "ANWB Contributies en Abonnementen" ;
+].
+[
+  rdf:type :Company ;
+  :category :Mobility ;
+  rdfs:label "BEH MOBILITEITSGELDEN" ;
+].
+[
+  rdf:type :Company ;
+  :category :Mobility ;
+  rdfs:label "Berkman Energie Servic VOORBURG" ;
+].
+[
+  rdf:type :Company ;
+  :category :Mobility ;
+  rdfs:label "Centraal Beheer" ;
+].
+[
+  rdf:type :Company ;
+  :category :Mobility ;
+  rdfs:label "MotorhuisFil311 SGRAVENHAGE" ;
+].
+[
+  rdf:type :Company ;
+  :category :Mobility ;
+  rdfs:label "Q-Park Operations Holding BV via Mollie" ;
+].
+[
+  rdf:type :Company ;
+  :category :Mobility ;
+  rdfs:label "QPARK CENTRUM DEN HAAG" ;
+].
+[
+  rdf:type :Company ;
+  :category :Mobility ;
+  rdfs:label "YELLOWBRICK BY BUCKAROO" ;
+].
+[
+  rdf:type :Company ;
+  :category :Pets ;
+  rdfs:label "DIERENKLINIEK PARKWEG VOORBURG" ;
+].
+[
+  rdf:type :Company ;
+  :category :Pets ;
+  rdfs:label "Huisdierenbazaar.nl via MultiSafepay" ;
+].
+[
+  rdf:type :Company ;
+  :category :Pets ;
+  rdfs:label "NEDERLANDSE VERENIGING VOORSTABIJ EN WETTERHOUNEN" ;
+].
+[
+  rdf:type :Company ;
+  :category :Pets ;
+  rdfs:label "PremierVet" ;
+].
+[
+  rdf:type :Company ;
+  :category :Subscriptions-Books ;
+  rdfs:label "Amazon EU SARL" ;
+].
+[
+  rdf:type :Company ;
+  :category :Subscriptions-Books ;
+  rdfs:label "BookSpot" ;
+].
+[
+  rdf:type :Company ;
+  :category :Subscriptions-Books ;
+  rdfs:label "De Groene Amsterdammer" ;
+].
+[
+  rdf:type :Company ;
+  :category :Subscriptions-Books ;
+  rdfs:label "DeSlegte.com B.V. via MultiSafepay" ;
+].
+[
+  rdf:type :Company ;
+  :category :Subscriptions-Books ;
+  rdfs:label "NRC" ;
+].
+[
+  rdf:type :Company ;
+  :category :Subscriptions-Books ;
+  rdfs:label "OMROEPVERENIGING VPRO" ;
+].
+[
+  rdf:type :Company ;
+  :category :Subscriptions-Books ;
+  rdfs:label "THE AMERICAN BOOK CENTER" ;
+].
+[
+  rdf:type :Company ;
+  :category :Subscriptions-Books ;
+  rdfs:label "Virtumedia B.V." ;
+].
+[
+  rdf:type :Company ;
+  :category :Subscriptions-Books ;
+  rdfs:label "bol.com b.v." ;
+].
+[
+  rdf:type :Company ;
+  :category :Taxes ;
+  rdfs:label "BELASTINGDIENST" ;
+].
+[
+  rdf:type :Company ;
+  :category :Taxes ;
+  rdfs:label "Regionale Belasting Groep" ;
+].
+[
+  rdf:type :Company ;
+  :category :Teleservices ;
+  rdfs:comment "NPO-plus" ;
+  rdfs:label "STICHTING DERDENGELDEN BUCKAROO" ;
+].
+[
+  rdf:type :Company ;
+  :category :Teleservices ;
+  rdfs:label "Antagonist B.V." ;
+].
+[
+  rdf:type :Company ;
+  :category :Teleservices ;
+  rdfs:label "NETFLIX INTERNATIONAL B.V." ;
+].
+[
+  rdf:type :Company ;
+  :category :Teleservices ;
+  rdfs:label "SPOTIFY" ;
+].
+[
+  rdf:type :Company ;
+  :category :Teleservices ;
+  rdfs:label "VODAFONE LIBERTEL BV" ;
+].
+[
+  rdf:type :Company ;
+  :category :Teleservices ;
+  rdfs:label "ZIGGO SERVICES BV" ;
+].
+[
+  rdf:type rdfs:Resource ;
+  :account "NL47INGB0002337844" ;
+  :amount 23.19 ;
+  :balanceAfterMutation 2353.86 ;
+  :counterAccount "NL27INGB0000026500" ;
+  :credit "false"^^xsd:boolean ;
+  :date "2023-02-28"^^xsd:date ;
+  :description "Naam: bol.com b.v. Omschrijving: 1563979870 0051100261626168 bol.com ref 1563979870 bol.com IBAN: NL27INGB0000026500 Kenmerk: 28-02-2023 16:03 0051100261626168 Valutadatum: 28-02-2023"@nl ;
+  :mutationCode "ID" ;
+  :mutationType "iDEAL" ;
+  :name "bol.com b.v." ;
+].

@@ -1,0 +1,44 @@
+scalar Date
+
+enum MutationCode {
+    BA
+    DV
+    GM
+    GT
+    IC
+    ID
+    OV
+    VZ
+}
+
+schema {
+  query: Query
+}
+
+type Query {
+    transactions: [Transaction]!
+    companies: [Company]!
+    companyTransactions(companyName: String!): [Transaction]
+    dateTransactions(date: Date!): [Transaction]
+}
+
+type Transaction {
+    date: Date!
+    name: String!
+    account: String!
+    counterAccount: String
+    description: String!
+    amount: Float!
+    credit: Boolean!
+    mutationType: String!
+    mutationCode: MutationCode!
+    tag: String
+}
+
+type Company {
+    name: String!
+    account: String
+    transactionsCount: Int!
+    totalAmount: Float!
+    tag: String
+}
