@@ -128,7 +128,7 @@ public class TransactionRepository {
                   PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
                   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                                   
-                  SELECT ?date ?name ?account ?counterAccount ?description ?date ?amount ?credit ?mutationType ?mutationCode ?tag
+                  SELECT DISTINCT ?date ?name ?account ?counterAccount ?description ?date ?amount ?credit ?mutationType ?mutationCode ?tag
                   WHERE {
                    ?s :name ?name ;
                     :account ?account ;
@@ -161,7 +161,7 @@ public class TransactionRepository {
                 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
                 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                                 
-                SELECT ?date ?account ?counterAccount ?description ?amount ?credit ?mutationType ?mutationCode ?tag
+                SELECT DISTINCT ?date ?account ?counterAccount ?description ?amount ?credit ?mutationType ?mutationCode ?tag
                 WHERE {
                  ?s :name """
                 + "\"" + companyName + "\"" + """
@@ -197,7 +197,7 @@ public class TransactionRepository {
                 PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
                 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
                 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-                SELECT ?date ?name ?account ?counterAccount ?description ?amount ?credit ?mutationType ?mutationCode ?tag
+                SELECT DISTINCT ?date ?name ?account ?counterAccount ?description ?amount ?credit ?mutationType ?mutationCode ?tag
                 WHERE {
                  ?s :name ?name ;
                   :account ?account ;
