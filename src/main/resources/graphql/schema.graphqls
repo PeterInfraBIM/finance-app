@@ -18,6 +18,7 @@ schema {
 type Query {
     transactions: [Transaction]!
     companies: [Company]!
+    tags: [Tag]!
     companyTransactions(companyName: String!): [Transaction]
     dateTransactions(date: Date!): [Transaction]
 }
@@ -41,4 +42,8 @@ type Company {
     transactionsCount: Int!
     totalAmount: Float!
     tag: String
+}
+
+type Tag {
+    name: String!
 }

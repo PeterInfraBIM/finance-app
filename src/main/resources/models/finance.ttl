@@ -395,6 +395,11 @@
 [
   rdf:type :Company ;
   :category :House ;
+  rdfs:label "AEOverdevest Gzn WASSENAAR NLD" ;
+].
+[
+  rdf:type :Company ;
+  :category :House ;
   rdfs:label "BUDGET ENERGIE" ;
 ].
 [
@@ -470,6 +475,11 @@
 [
   rdf:type :Company ;
   :category :Mobility ;
+  rdfs:label "P DEN HAAG 43129 SGRAVENHAGE" ;
+].
+[
+  rdf:type :Company ;
+  :category :Mobility ;
   rdfs:label "Q-Park Operations Holding BV via Mollie" ;
 ].
 [
@@ -516,6 +526,11 @@
   rdf:type :Company ;
   :category :Subscriptions-Books ;
   rdfs:label "BookSpot" ;
+].
+[
+  rdf:type :Company ;
+  :category :Subscriptions-Books ;
+  rdfs:label "DPG Media B.V." ;
 ].
 [
   rdf:type :Company ;
