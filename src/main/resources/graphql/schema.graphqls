@@ -21,6 +21,7 @@ type Query {
     tags: [Tag]!
     companyTransactions(companyName: String!): [Transaction]
     dateTransactions(date: Date!): [Transaction]
+    tagCompanies(tagName: String!): [Company]
 }
 
 type Transaction {
@@ -46,4 +47,7 @@ type Company {
 
 type Tag {
     name: String!
+    transactionsCount: Int!
+    totalAmount: Float!
+    companies: [Company]
 }

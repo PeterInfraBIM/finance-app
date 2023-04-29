@@ -1,4 +1,6 @@
 package nl.infrabim.financeapp.models;
 
-public record Tag(String name) {
+import java.util.List;
+
+public record Tag(String name, int transactionsCount, float totalAmount, List<Company> companies) {
 }
