@@ -3,6 +3,7 @@ package nl.infrabim.financeapp.repositories;
 import com.fasterxml.jackson.databind.JsonNode;
 import nl.infrabim.financeapp.models.Company;
 import nl.infrabim.financeapp.models.Tag;
+import nl.infrabim.financeapp.models.Transaction;
 import nl.infrabim.financeapp.services.FusekiService;
 import org.springframework.stereotype.Repository;
 
@@ -14,10 +15,12 @@ import java.util.List;
 public class TagRepository {
     private final FusekiService fusekiService;
     private final CompanyRepository companyRepository;
+    private final TransactionRepository transactionRepository;
 
-    public TagRepository(FusekiService fusekiService, CompanyRepository companyRepository) {
+    public TagRepository(FusekiService fusekiService, CompanyRepository companyRepository, TransactionRepository transactionRepository) {
         this.fusekiService = fusekiService;
         this.companyRepository = companyRepository;
+        this.transactionRepository = transactionRepository;
     }
 
     public List<Tag> listTags() {
@@ -57,6 +60,7 @@ public class TagRepository {
                     String companyAccount = null;
                     int transactionsCount = 0;
                     float totalAmount = 0.0f;
+                    List<Transaction> transactionList = new ArrayList<>();
                     JsonNode nameNode = node.get("companyName");
                     JsonNode accountNode = node.get("companyAccount");
                     if (nameNode != null) {
@@ -64,6 +68,7 @@ public class TagRepository {
                         if (accountNode != null) {
                             companyAccount = accountNode.get("value").asText();
                         }
+                        transactionList = transactionRepository.listCompanyTransactions(companyName);
                         JsonNode companyTransactionsAggregates = companyRepository.getCompanyTransactionsAggregates(companyName);
                         if (companyTransactionsAggregates != null) {
                             JsonNode countNode = companyTransactionsAggregates.get(0).get("transactionsCount");
@@ -72,7 +77,7 @@ public class TagRepository {
                             totalAmount = Float.parseFloat(amountNode.get("value").asText());
                         }
                     }
-                    companyList.add(new Company(companyName, companyAccount, transactionsCount, totalAmount, null));
+                    companyList.add(new Company(companyName, companyAccount, transactionsCount, totalAmount, transactionList, tagName));
                 }
             }
             return companyList;

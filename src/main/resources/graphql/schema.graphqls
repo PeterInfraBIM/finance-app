@@ -42,6 +42,7 @@ type Company {
     account: String
     transactionsCount: Int!
     totalAmount: Float!
+    transactions: [Transaction]
     tag: String
 }
 

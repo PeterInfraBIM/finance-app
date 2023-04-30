@@ -2,6 +2,7 @@ package nl.infrabim.financeapp.repositories;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import nl.infrabim.financeapp.models.Company;
+import nl.infrabim.financeapp.models.Transaction;
 import nl.infrabim.financeapp.services.FusekiService;
 import org.springframework.stereotype.Repository;
 
@@ -13,9 +14,11 @@ import java.util.List;
 public class CompanyRepository {
 
     private final FusekiService fusekiService;
+    private final TransactionRepository transactionRepository;
 
-    public CompanyRepository(FusekiService fusekiService) {
+    public CompanyRepository(FusekiService fusekiService, TransactionRepository transactionRepository) {
         this.fusekiService = fusekiService;
+        this.transactionRepository = transactionRepository;
     }
 
     public List<Company> listCompanies() {
@@ -46,6 +49,7 @@ public class CompanyRepository {
                     if (categoryNode != null) {
                         category = categoryNode.get("value").asText();
                     }
+                    List<Transaction> transactionList = transactionRepository.listCompanyTransactions(name);
                     JsonNode companyTransactionsAggregates = getCompanyTransactionsAggregates(name);
                     if (companyTransactionsAggregates != null) {
                         JsonNode countNode = companyTransactionsAggregates.get(0).get("transactionsCount");
@@ -54,7 +58,7 @@ public class CompanyRepository {
                         totalAmount = Float.parseFloat(amountNode.get("value").asText());
                     }
 
-                    companyList.add(new Company(name, counterAccount, transactionsCount, totalAmount, tag));
+                    companyList.add(new Company(name, counterAccount, transactionsCount, totalAmount, transactionList, tag));
                 }
             }
             return companyList;
@@ -90,21 +94,21 @@ public class CompanyRepository {
 
     public JsonNode getCompanyTransactionsAggregates(String companyName) throws IOException {
         String queryString = """
-            PREFIX : <http://infrabim.nl/finance#>
-            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-                            
-               SELECT (COUNT(?description) AS ?transactionsCount) (SUM(?amount) as ?totalAmount)
-               WHERE {
-                ?s :name
-            """
-            + "\"" + companyName + "\"" + """
-            ;
-                :description ?description ;
-                :amount ?amount .
-            }
-            """;
+                PREFIX : <http://infrabim.nl/finance#>
+                PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+                PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+                                
+                   SELECT (COUNT(?description) AS ?transactionsCount) (SUM(?amount) as ?totalAmount)
+                   WHERE {
+                    ?s :name
+                """
+                + "\"" + companyName + "\"" + """
+                ;
+                    :description ?description ;
+                    :amount ?amount .
+                }
+                """;
         return fusekiService.sendQuery(queryString);
     }
 
