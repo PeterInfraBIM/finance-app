@@ -19,6 +19,7 @@ type Query {
     transactions: [Transaction]!
     companies: [Company]!
     tags: [Tag]!
+    company(companyName: String!): Company
     companyTransactions(companyName: String!): [Transaction]
     dateTransactions(date: Date!): [Transaction]
     tagCompanies(tagName: String!): [Company]
