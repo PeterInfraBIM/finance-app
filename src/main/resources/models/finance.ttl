@@ -28,6 +28,11 @@
   rdfs:label "Charity"@en ;
   rdfs:label "Goede doelen"@nl ;
 .
+:Clothing
+  rdf:type :Category ;
+  rdfs:label "Clothing"@en ;
+  rdfs:label "Kleding"@nl ;
+.
 :Company
   rdf:type rdfs:Class ;
 .
@@ -265,6 +270,11 @@
 [
   rdf:type :Company ;
   :category :Charity ;
+  rdfs:label "KWF Loterijen via Mollie" ;
+].
+[
+  rdf:type :Company ;
+  :category :Charity ;
   rdfs:label "NAT POSTCODE LOTERIJ" ;
 ].
 [
@@ -411,6 +421,11 @@
   rdf:type :Company ;
   :category :House ;
   rdfs:label "DE BLOEMENVINK LEIDSCHENDAM NLD" ;
+].
+[
+  rdf:type :Company ;
+  :category :House ;
+  rdfs:label "DUNEA DUIN & WATER" ;
 ].
 [
   rdf:type :Company ;
@@ -612,11 +627,6 @@
   rdf:type :Company ;
   :category :Teleservices ;
   rdfs:label "KPN - Mobiel" ;
-].
-[
-  rdf:type :Company ;
-  :category :Teleservices ;
-  rdfs:label "KWF Loterijen via Mollie" ;
 ].
 [
   rdf:type :Company ;
